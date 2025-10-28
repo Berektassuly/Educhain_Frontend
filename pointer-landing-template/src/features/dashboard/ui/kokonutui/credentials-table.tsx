@@ -9,13 +9,10 @@ import {
   } from "@/shared/ui/table";
   
   interface Credential {
-    id: string;
-    title: string;
-    recipient_wallet_address: string;
-    transaction_hash: string;
-    organizations: {
-      name: string;
-    };
+    hash: string;
+    issuer_id: string;
+    recipient_id: string;
+    solana_tx_id: string;
   }
   
   interface Props {
@@ -32,26 +29,24 @@ import {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Credential</TableHead>
-                <TableHead>Recipient</TableHead>
                 <TableHead>Issuer</TableHead>
+                <TableHead>Recipient</TableHead>
                 <TableHead>Transaction</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {credentials?.map((cred) => (
-                <TableRow key={cred.id}>
-                  <TableCell>{cred.title}</TableCell>
-                  <TableCell className="truncate max-w-[150px]">{cred.recipient_wallet_address}</TableCell>
-                  <TableCell>{cred.organizations.name}</TableCell>
+                <TableRow key={cred.hash}>
+                  <TableCell>{cred.issuer_id}</TableCell>
+                  <TableCell className="truncate max-w-[150px]">{cred.recipient_id}</TableCell>
                   <TableCell className="truncate max-w-[150px]">
                     <a
-                      href={`https://etherscan.io/tx/${cred.transaction_hash}`} // Example for Ethereum
+                      href={`https://explorer.solana.com/tx/${cred.solana_tx_id}?cluster=devnet`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:underline"
                     >
-                      {cred.transaction_hash}
+                      {cred.solana_tx_id}
                     </a>
                   </TableCell>
                 </TableRow>
