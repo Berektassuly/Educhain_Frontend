@@ -1,5 +1,4 @@
 import { HeroSection } from "@/features/landing/ui/sections/hero-section"
-import { DashboardPreview } from "@/features/landing/ui/sections/dashboard-preview"
 import TrustEcosystemSection from "@/features/landing/ui/sections/trust-ecosystem-section";
 import { LargeTestimonial } from "@/features/landing/ui/sections/large-testimonial"
 import { PricingSection } from "@/features/landing/ui/sections/pricing-section"
@@ -15,12 +14,6 @@ export default function LandingPage() {
       <div className="relative z-10">
         <main className="max-w-[1320px] mx-auto relative">
           <HeroSection />
-          {/* Dashboard Preview Wrapper */}
-          <div className="absolute bottom-[-150px] md:bottom-[-400px] left-1/2 transform -translate-x-1/2 z-30">
-            <AnimatedSection>
-              <DashboardPreview />
-            </AnimatedSection>
-          </div>
         </main>
         <AnimatedSection id="features-section" className="relative z-10 max-w-[1320px] mx-auto mt-16" delay={0.2}>
           <TrustEcosystemSection />
