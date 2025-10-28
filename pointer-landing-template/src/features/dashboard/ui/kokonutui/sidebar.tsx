@@ -2,11 +2,8 @@
 
 import {
   BarChart2,
-  Receipt,
   Building2,
-  CreditCard,
   Folder,
-  Wallet,
   Users2,
   Shield,
   MessagesSquare,
@@ -17,6 +14,7 @@ import {
 } from "lucide-react"
 
 import { Home } from "lucide-react"
+// Link is already correctly imported from next/link
 import Link from "next/link"
 import { useState } from "react"
 
@@ -37,6 +35,7 @@ export default function Sidebar() {
     children: React.ReactNode
   }) {
     return (
+      // This is already correctly using Next.js Link component
       <Link
         href={href}
         onClick={handleNavigation}
@@ -65,6 +64,7 @@ export default function Sidebar() {
             `}
       >
         <div className="h-full flex flex-col">
+          {/* This is also correctly using Next.js Link component */}
           <Link
             href="/"
             className="h-16 px-6 flex items-center border-b border-gray-200 dark:border-[#1F1F23]"
@@ -81,7 +81,8 @@ export default function Sidebar() {
                   Overview
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Home}>
+                  {/* All these NavItems already use Next.js Link internally */}
+                  <NavItem href="/dashboard" icon={Home}>
                     Dashboard
                   </NavItem>
                   <NavItem href="#" icon={BarChart2}>
@@ -98,27 +99,11 @@ export default function Sidebar() {
 
               <div>
                 <div className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                  Finance
-                </div>
-                <div className="space-y-1">
-                  <NavItem href="#" icon={Wallet}>
-                    Transactions
-                  </NavItem>
-                  <NavItem href="#" icon={Receipt}>
-                    Invoices
-                  </NavItem>
-                  <NavItem href="#" icon={CreditCard}>
-                    Payments
-                  </NavItem>
-                </div>
-              </div>
-
-              <div>
-                <div className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Team
                 </div>
                 <div className="space-y-1">
-                  <NavItem href="#" icon={Users2}>
+                  {/* All these NavItems already use Next.js Link internally */}
+                  <NavItem href="/dashboard/team" icon={Users2}>
                     Members
                   </NavItem>
                   <NavItem href="#" icon={Shield}>
@@ -137,7 +122,8 @@ export default function Sidebar() {
 
           <div className="px-4 py-4 border-t border-gray-200 dark:border-[#1F1F23]">
             <div className="space-y-1">
-              <NavItem href="#" icon={Settings}>
+              {/* These NavItems also already use Next.js Link internally */}
+              <NavItem href="/settings" icon={Settings}>
                 Settings
               </NavItem>
               <NavItem href="#" icon={HelpCircle}>
