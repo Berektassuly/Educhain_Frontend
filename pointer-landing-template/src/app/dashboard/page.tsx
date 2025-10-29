@@ -1,7 +1,6 @@
-
-import Dashboard from "@/features/dashboard/ui/kokonutui/dashboard";
 import { supabase } from "@/infrastructure/supabase-client";
 import { unstable_noStore as noStore } from 'next/cache';
+import DashboardContent from "@/features/dashboard/ui/kokonutui/dashboard";
 
 export default async function DashboardPage() {
   noStore(); // Ensure dynamic data fetching
@@ -12,11 +11,8 @@ export default async function DashboardPage() {
 
   if (credsError) {
     console.error('Error fetching data:', credsError);
-    // Handle error appropriately
-    return <div>Error loading dashboard data.</div>;
+    return <div className="text-red-500">Error loading dashboard data.</div>;
   }
 
-  return <Dashboard credentials={credentials || []} />;
+  return <DashboardContent credentials={credentials || []} />;
 }
-
-

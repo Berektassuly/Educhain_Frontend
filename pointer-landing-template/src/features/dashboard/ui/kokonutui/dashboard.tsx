@@ -1,6 +1,6 @@
 
 import Content from "./content";
-import Layout from "./layout";
+
 
 // Define types for our data to ensure type safety
 interface Credential {
@@ -15,11 +15,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ credentials }: DashboardProps) {
-  return (
-    <Layout>
-      <Content credentials={credentials} />
-    </Layout>
-  );
+  return <Content credentials={credentials} />;
 }
 
 
