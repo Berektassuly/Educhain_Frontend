@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { PlusCircle } from "lucide-react";
-import { Button } from "@/shared/ui/button";
-import { MembersTable } from "@/features/team/ui/members-table";
-import { AddMemberModal } from "@/features/team/ui/add-member-modal";
+import { Button } from "@/shared/components/ui/button";
+import { MembersTable } from "@/features/team/components/members-table";
+import { AddMemberModal } from "@/features/team/components/add-member-modal";
 
 export default function TeamPage() {
   const [addMemberOpen, setAddMemberOpen] = useState(false);

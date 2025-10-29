@@ -1,6 +1,6 @@
 // src/app/dashboard/layout.tsx
 
-import Sidebar from "@/features/dashboard/ui/kokonutui/sidebar";
+import Sidebar from "@/features/dashboard/components/sidebar";
 
 export default function DashboardLayout({
   children,

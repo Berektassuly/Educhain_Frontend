@@ -1,6 +1,6 @@
 import { supabase } from "@/infrastructure/supabase-client";
 import { unstable_noStore as noStore } from 'next/cache';
-import DashboardContent from "@/features/dashboard/ui/kokonutui/dashboard";
+import DashboardContent from "@/features/dashboard/components/dashboard";
 
 export default async function DashboardPage() {
   noStore(); // Ensure dynamic data fetching
