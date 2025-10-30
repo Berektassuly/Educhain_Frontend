@@ -91,9 +91,7 @@ export default function Sidebar() {
                   <NavItem href="#" icon={Building2}>
                     Organization
                   </NavItem>
-                  <NavItem href="#" icon={Folder}>
-                    Projects
-                  </NavItem>
+
                 </div>
               </div>
 
