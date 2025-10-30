@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import FileUpload from "@/features/bulk-issue/components/file-upload";
+import SingleFileUpload from "@/features/bulk-issue/components/single-file-upload";
 import PreviewTable from "@/features/bulk-issue/components/preview-table";
 
 interface CredentialStatus {
@@ -15,6 +16,15 @@ export default function BulkIssuePage() {
   const [errors, setErrors] = useState<any[]>([]);
   const [issuanceStatus, setIssuanceStatus] = useState<CredentialStatus[]>([]);
   const [isIssuing, setIsIssuing] = useState(false);
+  const [selectedIssuerId, setSelectedIssuerId] = useState<string | null>(null);
+  const [templateFile, setTemplateFile] = useState<File | null>(null);
+
+  // Placeholder for issuers. In a real app, this would come from an API.
+  const issuers = [
+    { id: "issuer1", name: "Issuer One" },
+    { id: "issuer2", name: "Issuer Two" },
+    { id: "issuer3", name: "Issuer Three" },
+  ];
 
   const validateData = (data: any[]) => {
     const validationErrors: any[] = [];
@@ -38,12 +48,21 @@ export default function BulkIssuePage() {
 
   const issueCredential = async (credentialData: any): Promise<CredentialStatus> => {
     try {
+      if (!selectedIssuerId || !templateFile) {
+        throw new Error("Issuer or template file not selected.");
+      }
+
+      const formData = new FormData();
+      formData.append("file", templateFile);
+      formData.append("issuerId", selectedIssuerId);
+      formData.append("recipientId", credentialData.recipient_id);
+      if (credentialData.serial) {
+        formData.append("serialNumber", credentialData.serial);
+      }
+
       const response = await fetch("/api/credentials/issue", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentialData),
+        body: formData,
       });
 
       if (!response.ok) {
@@ -81,6 +100,14 @@ export default function BulkIssuePage() {
   };
 
   const handleStartIssuance = () => {
+    if (!selectedIssuerId) {
+      alert("Please select an issuer.");
+      return;
+    }
+    if (!templateFile) {
+      alert("Please upload a template file.");
+      return;
+    }
     if (errors.length > 0) {
       alert("Please fix the errors before starting the issuance.");
       return;
@@ -120,11 +147,34 @@ export default function BulkIssuePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 className="text-xl font-semibold mb-4">1. Upload CSV File</h2>
+          <h2 className="text-xl font-semibold mb-4">1. Select Issuer</h2>
+          <select
+            value={selectedIssuerId || ""}
+            onChange={(e) => setSelectedIssuerId(e.target.value)}
+            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          >
+            <option value="" disabled>Select an Issuer</option>
+            {issuers.map((issuer) => (
+              <option key={issuer.id} value={issuer.id}>
+                {issuer.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-4">2. Upload Template File</h2>
+          <SingleFileUpload
+            onFileSelected={setTemplateFile}
+            acceptedFileTypes={["application/pdf", "image/png", "image/jpeg"]}
+            label="Drag 'n' drop a template file here, or click to select a file (PDF, PNG, JPG)"
+          />
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-4">3. Upload CSV File</h2>
           <FileUpload onFileParsed={handleFileParsed} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-4">2. CSV Format Guide</h2>
+          <h2 className="text-xl font-semibold mb-4">4. CSV Format Guide</h2>
           <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <p>Your CSV file should have the following columns:</p>
             <ul className="list-disc list-inside">
@@ -141,10 +191,9 @@ export default function BulkIssuePage() {
 
       {parsedData.length > 0 && (
         <section>
-          <h2 className="text-xl font-semibold mb-4">3. Preview and Confirmation</h2>
+          <h2 className="text-xl font-semibold mb-4">5. Preview and Confirmation</h2>
           <PreviewTable data={parsedData} errors={errors} issuanceStatus={issuanceStatus} />
-          {isIssuing && (
-            <div className="mt-8 space-y-4">
+          <div className="mt-8 space-y-4">
               <h2 className="text-xl font-semibold">Issuance Progress</h2>
               <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
                 <div
@@ -160,7 +209,6 @@ export default function BulkIssuePage() {
                 <span>Pending: {pendingIssuances}</span>
               </div>
             </div>
-          )}
           <div className="mt-4 flex justify-end">
             <button 
               onClick={handleStartIssuance} 
