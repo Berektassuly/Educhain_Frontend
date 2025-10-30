@@ -61,7 +61,13 @@ export default function TopNav() {
           </SignUpButton>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonTrigger: "cl-user-button-trigger",
+              },
+            }}
+          />
         </SignedIn>
       </div>
     </nav>

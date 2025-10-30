@@ -50,3 +50,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.cl-user-button-trigger svg {
+  color: black !important;
+}
