@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
       "My paper diploma is gathering dust somewhere I don't even remember. My Legacy profile is now my single source of truth. It's not a piece of paper; it's a living, verifiable record of my entire journey, from my first hackathon win to my graduation. Recruiters see this and they get it instantly.",
     name: "Ali T.",
     company: "Graduate, Alem School",
-    avatar: "/images/avatars/ali-tlekbai.png",
+    avatar: "/images/ali-tlekbai.png",
     type: "large-teal",
   },
   {
@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
       "We used to spend 20% of our recruiting time on background checks. Legacy eliminated that. Now, if a candidate has a verified profile, we trust it. It’s faster, cheaper, and infinitely more secure than any CV we’ve ever received.",
     name: "Elena Kim",
     company: "Head of Talent, EPAM Kazakhstan",
-    avatar: "/images/avatars/elena-kim.png",
+    avatar: "/images/elena-kim.png",
     type: "small-dark",
   },
   {
@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
       "As a freelancer, my reputation is my business. Before, I had to rely on screenshots and client reviews. Now, I have immutable, on-chain proof of every completed project and certification. It's the ultimate trust signal for new clients.",
     name: "Sanzhar Omarov",
     company: "Freelance Web3 Developer",
-    avatar: "/images/avatars/sanzhar-omarov.png",
+    avatar: "/images/sanzhar-omarov.png",
     type: "small-dark",
   },
   {
@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
       "Diploma fraud is a silent threat to our institution's reputation. Legacy provides a simple, powerful solution to issue tamper-proof digital credentials, protecting the value of the degrees we award.",
     name: "Dr. Aisha Nurzhanova",
     company: "Dean's Office, KBTU",
-    avatar: "/images/avatars/aisha-nurzhanova.png",
+    avatar: "/images/aisha-nurzhanova.png",
     type: "small-dark",
   },
   {
@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
       "We no longer hand out simple PDF certificates. With Legacy, every winner, every participant gets a permanent, shareable SBT. It adds real, lasting value to their participation long after the event is over.",
     name: "Sanzhar",
     company: "Admin, Decentrathon",
-    avatar: "/images/avatars/sanzhar.png",
+    avatar: "/images/sanzhar.png",
     type: "small-dark",
   },
   {
@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
       "Integrating Legacy for our internal training certifications was not just simple, it felt seamless. We went from manual tracking in spreadsheets to an automated, verifiable system of employee achievements in a single afternoon.",
     name: "Albert Flores",
     company: "CEO, Local Startup",
-    avatar: "/images/avatars/albert-flores.png",
+    avatar: "/images/albert-flores.png",
     type: "large-light",
   },
   {
@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
       "Patient safety is non-negotiable. The risk of fraudulent medical credentials has catastrophic consequences. Legacy provides an immutable, instantly verifiable record of a practitioner's qualifications. This is the new standard of trust in healthcare.",
     name: "Dr. Kiril",
     company: "Medical Director, Medina Clinic",
-    avatar: "/images/avatars/doctor.png",
+    avatar: "/images/doctor.png",
     type: "small-dark",
   },
 ]

@@ -14,12 +14,8 @@ export function LargeTestimonial() {
                 }
               </div>
               <div className="flex justify-start items-center gap-5">
-                {/* 
-                  ВАЖНО: Замените src на реальный путь к аватару. 
-                  Я использовал плейсхолдер. 
-                */}
                 <Image
-                  src="/images/avatars/mukhamedali-avatar.png" // <--- ЗАМЕНИТЕ ЭТОТ ПУТЬ
+                  src="/images/mukhamedali-avatar.png"
                   alt="Mukhamedali avatar"
                   width={48}
                   height={48}
