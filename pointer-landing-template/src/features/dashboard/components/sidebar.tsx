@@ -121,12 +121,7 @@ export default function Sidebar() {
                   <NavItem href="/dashboard/team" icon={Users2}>
                     Members
                   </NavItem>
-                  <NavItem href="#" icon={Shield}>
-                    Permissions
-                  </NavItem>
-                  <NavItem href="#" icon={MessagesSquare}>
-                    Chat
-                  </NavItem>
+
 
                 </div>
               </div>
