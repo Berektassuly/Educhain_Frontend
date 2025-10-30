@@ -1,7 +1,9 @@
 
 "use client";
 
+import { useState } from "react";
 import CredentialsTable from "./credentials-table";
+import Search from "./search";
 
 // Define types for our data to ensure type safety
 interface Credential {
@@ -16,6 +18,15 @@ interface ContentProps {
 }
 
 export default function Content({ credentials }: ContentProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchType, setSearchType] = useState("issuer_id");
+
+  const filteredCredentials = credentials.filter((credential) =>
+    credential[searchType as keyof Credential]
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="space-y-8">
       <section className="text-center space-y-4">
@@ -27,7 +38,21 @@ export default function Content({ credentials }: ContentProps) {
         </p>
       </section>
 
-      <CredentialsTable credentials={credentials} />
+      <div className="flex justify-between items-center">
+        <Search
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchType={searchType}
+          setSearchType={setSearchType}
+        />
+        <p className="text-gray-600 dark:text-gray-400">
+          {searchQuery
+            ? `Showing ${filteredCredentials.length} credentials for "${searchQuery}"`
+            : "Showing all credentials"}
+        </p>
+      </div>
+
+      <CredentialsTable credentials={filteredCredentials} />
     </div>
   );
 }

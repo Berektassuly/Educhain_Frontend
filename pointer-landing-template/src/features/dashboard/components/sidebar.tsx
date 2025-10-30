@@ -105,8 +105,9 @@ export default function Sidebar() {
                   <NavItem href="/sign" icon={Shield}>
                     Sign Document
                   </NavItem>
-                  <NavItem href="/issue-credential" icon={Folder}>
-                    Issue Credential
+
+                  <NavItem href="/bulk-issue" icon={Folder}>
+                    Bulk Issue Credential
                   </NavItem>
                 </div>
               </div>
@@ -126,9 +127,7 @@ export default function Sidebar() {
                   <NavItem href="#" icon={MessagesSquare}>
                     Chat
                   </NavItem>
-                  <NavItem href="#" icon={Video}>
-                    Meetings
-                  </NavItem>
+
                 </div>
               </div>
             </div>
