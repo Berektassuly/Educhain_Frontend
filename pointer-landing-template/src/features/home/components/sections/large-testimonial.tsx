@@ -27,7 +27,7 @@ export function LargeTestimonial() {
                     Mukhamedali, Founder of Legacy
                   </div>
                   <div className="text-muted-foreground text-sm font-normal leading-6">
-                    16-year-old builder on a mission
+                    builder on a mission
                   </div>
                 </div>
               </div>
