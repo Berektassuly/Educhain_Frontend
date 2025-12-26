@@ -1,8 +1,8 @@
 // @/components/kokonutui/add-organization-form.tsx
 "use client";
 
-import { useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
@@ -10,7 +10,7 @@ import { Textarea } from "@/shared/components/ui/textarea";
 import { addOrganization } from '@/features/dashboard/api/actions';
 import { useToast } from '@/shared/hooks/use-toast';
 
-const initialState = {
+const initialState: { success: boolean; error: string | null } = {
   success: false,
   error: null,
 };
@@ -29,7 +29,7 @@ export function AddOrganizationForm({
 }: {
   closeDialog: () => void;
 }) {
-  const [state, formAction] = useFormState(addOrganization, initialState);
+  const [state, formAction] = useActionState(addOrganization, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 

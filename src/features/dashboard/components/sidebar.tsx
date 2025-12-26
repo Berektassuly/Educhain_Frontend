@@ -96,7 +96,7 @@ export default function Sidebar() {
               </div>
 
               <div>
-                <div class="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Actions
                 </div>
                 <div className="space-y-1">

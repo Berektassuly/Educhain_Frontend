@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/app/shared/lib/utils";
+import { cn } from "@/shared/utils/utils";
 import { 
   User, 
   Building, 

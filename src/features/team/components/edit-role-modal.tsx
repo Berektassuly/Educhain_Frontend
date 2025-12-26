@@ -15,8 +15,15 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 import { Label } from "@/shared/components/ui/label";
+import type { TeamMember } from "../hooks/use-team-members";
 
-export function EditRoleModal({ member, open, onOpenChange }) {
+interface EditRoleModalProps {
+  member: TeamMember | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function EditRoleModal({ member, open, onOpenChange }: EditRoleModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>

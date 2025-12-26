@@ -8,8 +8,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/shared/components/ui/alert-dialog";
+import type { TeamMember } from "../hooks/use-team-members";
 
-export function RemoveMemberDialog({ member, open, onOpenChange }) {
+interface RemoveMemberDialogProps {
+  member: TeamMember | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function RemoveMemberDialog({ member, open, onOpenChange }: RemoveMemberDialogProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>

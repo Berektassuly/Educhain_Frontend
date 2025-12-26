@@ -9,7 +9,12 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function addOrganization(formData: FormData) {
+type ActionState = { success: boolean; error: string | null };
+
+export async function addOrganization(
+  prevState: ActionState,
+  formData: FormData
+): Promise<ActionState> {
   const orgData = {
     name: formData.get('name') as string,
     wallet_address: formData.get('wallet_address') as string,
@@ -26,5 +31,5 @@ export async function addOrganization(formData: FormData) {
   }
 
   revalidatePath('/dashboard'); // This will refresh the data on the dashboard page
-  return { success: true };
+  return { success: true, error: null };
 }

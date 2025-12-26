@@ -1,7 +1,15 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
+export interface TeamMember {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatar: string;
+}
+
 // Mock data
-const members = [
+const members: TeamMember[] = [
   {
     id: "1",
     name: "Sanzhar Omarov",
@@ -26,11 +34,11 @@ const members = [
 ];
 
 // Mock API calls
-const fetchTeamMembers = async () => {
+const fetchTeamMembers = async (): Promise<TeamMember[]> => {
   return new Promise((resolve) => setTimeout(() => resolve(members), 500));
 };
 
-const addTeamMember = async (newMember) => {
+const addTeamMember = async (newMember: Omit<TeamMember, "id">): Promise<TeamMember> => {
   return new Promise((resolve) =>
     setTimeout(() => {
       const member = { ...newMember, id: Date.now().toString() };
@@ -40,7 +48,7 @@ const addTeamMember = async (newMember) => {
   );
 };
 
-const updateTeamMember = async (updatedMember) => {
+const updateTeamMember = async (updatedMember: Partial<TeamMember> & { id: string }): Promise<TeamMember | null> => {
   return new Promise((resolve) =>
     setTimeout(() => {
       const index = members.findIndex((m) => m.id === updatedMember.id);
@@ -54,7 +62,7 @@ const updateTeamMember = async (updatedMember) => {
   );
 };
 
-const removeTeamMember = async (memberId) => {
+const removeTeamMember = async (memberId: string): Promise<boolean> => {
   return new Promise((resolve) =>
     setTimeout(() => {
       const index = members.findIndex((m) => m.id === memberId);

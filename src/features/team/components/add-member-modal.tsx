@@ -17,7 +17,12 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 
-export function AddMemberModal({ open, onOpenChange }) {
+interface AddMemberModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function AddMemberModal({ open, onOpenChange }: AddMemberModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
