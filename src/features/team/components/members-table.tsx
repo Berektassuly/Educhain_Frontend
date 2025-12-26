@@ -12,7 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import { useTeamMembers } from "../hooks/use-team-members";
+import { useTeamMembers, type TeamMember } from "../hooks/use-team-members";
 import { AddMemberModal } from "./add-member-modal";
 import { EditRoleModal } from "./edit-role-modal";
 import { RemoveMemberDialog } from "./remove-member-dialog";
@@ -22,14 +22,14 @@ export function MembersTable() {
   const [addMemberOpen, setAddMemberOpen] = useState(false);
   const [editRoleOpen, setEditRoleOpen] = useState(false);
   const [removeMemberOpen, setRemoveMemberOpen] = useState(false);
-  const [selectedMember, setSelectedMember] = useState(null);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const handleEdit = (member) => {
+  const handleEdit = (member: TeamMember) => {
     setSelectedMember(member);
     setEditRoleOpen(true);
   };
 
-  const handleRemove = (member) => {
+  const handleRemove = (member: TeamMember) => {
     setSelectedMember(member);
     setRemoveMemberOpen(true);
   };
@@ -59,7 +59,7 @@ export function MembersTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {members.map((member) => (
+          {(members as TeamMember[])?.map((member) => (
             <TableRow key={member.email}>
               <TableCell>
                 <div className="flex items-center gap-3">
